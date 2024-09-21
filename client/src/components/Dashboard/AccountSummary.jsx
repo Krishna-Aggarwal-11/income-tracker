@@ -1,10 +1,29 @@
 import React from "react";
 
-const AccountSummary = () => {
+const AccountSummary = ({ profile }) => {
+  const Income =  (profile?.accounts.flatMap((account) => account?.transactions));
+
+  const totalIncome = Income.reduce((acc, transaction) => {
+    if (transaction?.transactionType === "Income") {
+      return acc + transaction?.amount;
+    } else {
+      return acc;
+    }
+  }, 0);
+
+  const totalExpenese = Income.reduce((acc, transaction) => {
+    if (transaction?.transactionType === "Expenses") {
+      return acc + transaction?.amount;
+    } else {
+      return acc;
+    }
+  }, 0);
+
+
   return (
     <>
       <div className="max-w-4xl mx-auto mb-12 text-center">
-        <h3 className="mb-4 text-3xl md:text-4xl leading-tight text-coolGray-900 font-bold tracking-tighter">
+        <h3 className="my-4 text-3xl md:text-4xl leading-tight text-coolGray-900 font-bold tracking-tighter">
           Total Income/Expenses of All Accounts
         </h3>
         <p className="text-lg md:text-xl text-coolGray-500 font-medium">
@@ -43,7 +62,7 @@ const AccountSummary = () => {
                 <div className="flex flex-wrap items-center justify-between -m-1">
                   <div className="w-auto p-1">
                     <h2 className="font-medium text-3xl text-black tracking-tighter">
-                      $4,540
+                      ${totalIncome}
                     </h2>
                   </div>
                   <div className="w-auto p-1">
@@ -60,7 +79,7 @@ const AccountSummary = () => {
                           fill="#22C55E"
                         />
                       </svg>
-                      <p>23%</p>
+                      <p>%</p>
                     </div>
                   </div>
                 </div>
@@ -71,7 +90,7 @@ const AccountSummary = () => {
                 <div className="flex flex-wrap items-end justify-between -m-2 mb-2">
                   <div className="w-auto p-2">
                     <h3 className="text-sm text-coolGray-500 font-medium">
-                      Todays Expenses
+                      Total Expenses
                     </h3>
                   </div>
                   <div className="w-auto p-2">
@@ -94,7 +113,7 @@ const AccountSummary = () => {
                 <div className="flex flex-wrap items-center justify-between -m-1">
                   <div className="w-auto p-1">
                     <h2 className="font-medium text-3xl text-black tracking-tighter">
-                      14
+                      ${totalExpenese}
                     </h2>
                   </div>
                   <div className="w-auto p-1">
@@ -111,7 +130,7 @@ const AccountSummary = () => {
                           fill="#22C55E"
                         />
                       </svg>
-                      <p>8%</p>
+                      <p>%</p>
                     </div>
                   </div>
                 </div>
@@ -145,7 +164,7 @@ const AccountSummary = () => {
                 <div className="flex flex-wrap items-center justify-between -m-1">
                   <div className="w-auto p-1">
                     <h2 className="font-medium text-3xl text-black tracking-tighter">
-                      $91.42
+                      ${totalIncome-totalExpenese}
                     </h2>
                   </div>
                   <div className="w-auto p-1">
@@ -162,7 +181,7 @@ const AccountSummary = () => {
                           fill="#22C55E"
                         />
                       </svg>
-                      <p>23%</p>
+                      <p>%</p>
                     </div>
                   </div>
                 </div>

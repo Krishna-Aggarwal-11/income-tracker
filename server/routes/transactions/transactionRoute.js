@@ -6,13 +6,9 @@ const transactionRoute = express.Router();
 
 
 transactionRoute.post("/",isLogin,createTransaction);
-
 transactionRoute.get("/",getAllTransaction);
-
 transactionRoute.get("/:id",getSingleTransaction);
-
 transactionRoute.delete("/:id",deleteTransaction);
-
 transactionRoute.put("/:id",updateTransaction);
 
 module.exports = transactionRoute;

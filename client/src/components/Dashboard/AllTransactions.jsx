@@ -2,6 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AllTransactions = ({ transactions, accountId }) => {
+
+  const deleteTransaction = async (id) => {
+      try {
+        const res = await fetch(`http://localhost:9000/api/v1/transactions/${id}`,{
+          method: "DELETE",
+        }
+        );
+        if (res.ok) {
+          window.location.reload();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
+  
+
   return (
     <>
       <div className="px-4 sm:px-6 lg:px-8">
@@ -58,7 +75,7 @@ const AllTransactions = ({ transactions, accountId }) => {
                         scope="col"
                         className="relative py-3.5 pl-3 pr-4 sm:pr-6"
                       >
-                        <span className="sr-only">Edit</span>
+                        <span className="">Delete</span>
                       </th>
                     </tr>
                   </thead>
@@ -93,16 +110,18 @@ const AllTransactions = ({ transactions, accountId }) => {
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                             {transaction?.notes}
                           </td>
-                          <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <a
-                              href="#"
-                              className="text-indigo-600 hover:text-indigo-900"
+                          <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-center text-sm font-medium sm:pr-6">
+                            <button
+                              onClick={() => {
+                                deleteTransaction(transaction?._id);
+                              }}
+                              className="text-red-600 hover:text-red-900"
                             >
-                              Edit
+                              Delete
                               <span className="sr-only">
                                 , {transaction?.name}
                               </span>
-                            </a>
+                            </button>
                           </td>
                         </tr>
                       );

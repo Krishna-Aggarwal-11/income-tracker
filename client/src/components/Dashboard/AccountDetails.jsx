@@ -56,8 +56,7 @@ export default function AccountDetails() {
                   {account?.name}
                 </h2>
                 <p className="mt-3 text-xl text-gray-500 sm:mt-4">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Repellendus repellat laudantium.
+                  {account?.notes}
                 </p>
               </div>
             </div>
@@ -85,12 +84,12 @@ export default function AccountDetails() {
                         <dd className=" text-5xl font-bold tracking-tight text-red-600">
                           $ {totalExpenses}
                         </dd>
-                        <Link
+                        {/* <Link
                           to={`/expenses-list/${3}`}
                           className="  font-bold tracking-tight text-green-600"
                         >
                           View History
-                        </Link>
+                        </Link> */}
                       </div>
                       <div className="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
                         <dt className=" mt-2 text-lg font-medium leading-6 text-gray-500">
@@ -99,12 +98,12 @@ export default function AccountDetails() {
                         <dd className=" text-5xl font-bold tracking-tight text-green-600">
                           ${totalIncome + account?.initialBalance}
                         </dd>
-                        <Link
+                        {/* <Link
                           to={`/income-list/`}
                           className="  font-bold tracking-tight text-green-600"
                         >
                           View History
-                        </Link>
+                        </Link> */}
                       </div>
                     </dl>
                   </div>

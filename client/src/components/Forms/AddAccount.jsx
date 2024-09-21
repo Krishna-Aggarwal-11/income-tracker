@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
 import { accountContext } from "../context/AccountContext/AccountContext";
+import { useNavigate } from "react-router-dom";
 
 const AddAccount =() => {
+  const { navigate } = useNavigate();
   const { createAccountAction, error } = useContext(accountContext);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,7 +20,9 @@ const AddAccount =() => {
   //handle form submit
   const handleSubmit = e => {
     e.preventDefault();
-    createAccountAction(formData);
+    if(createAccountAction(formData)){
+      navigate("/dashboard")
+    }
   };
 
   return (
@@ -78,7 +82,7 @@ const AddAccount =() => {
                   <option value="Checking">Checking</option>
                   <option value="Credit Card">Credit Card</option>
                   <option value="Utilities">Utilities</option>
-                  <option value="Builing">Builing</option>
+                  <option value="Builing">Building</option>
                   <option value="Travel">Travel</option>
                   <option value="Education">Education</option>
                   <option value="Personal">Personal</option>

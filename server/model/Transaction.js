@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 //user schema
 const transactionSchema = new mongoose.Schema(
   {
-   
+    name:{
+        type: String,
+        required: true,
+    },
     transactionType: {
       type: String,
       enum: ["Income", "Expenses"],

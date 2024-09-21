@@ -29,16 +29,7 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="block h-8 w-auto lg:hidden"
-                    src={logo}
-                    alt="K.A"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src={logo}
-                    alt="K.A"
-                  />
+                  <h1 className="text-3xl font-bold text-white">TracIncome</h1>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
                   <Link

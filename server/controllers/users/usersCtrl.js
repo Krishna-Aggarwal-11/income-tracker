@@ -48,6 +48,7 @@ const userLogin = async(req,res,next)=>{
         if (!isPassowrdMatch) {
             return next(new AppErr("Invalid login credentials .",400));
         };
+        console.log(generateToken(userFound._id))
         res.json({status : " success",fullname : userFound.fullname , id : userFound._id ,
         token : generateToken(userFound._id)
     });

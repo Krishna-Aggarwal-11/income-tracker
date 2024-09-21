@@ -8,7 +8,7 @@ const AccountSchema = new mongoose.Schema({
     accountType : {
         type : String ,
         enum : [
-            "Saving",
+            "Savings",
             "Investment",
             "Checking",
             "Credit Card",
